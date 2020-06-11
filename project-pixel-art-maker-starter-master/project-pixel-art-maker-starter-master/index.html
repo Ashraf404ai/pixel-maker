@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pixel Art Maker!</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monoton">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1 align="center" id="elastic"><font size="12">Pixel Art Maker</font></hi>
+
+    <h2>Choose Grid Size</h2>
+    <form id="sizePicker">
+        Grid Height:
+        <input type="number" id="inputHeight" name="height" min="1" value="25">
+        Grid Width:
+        <input type="number" id="inputWidth" name="width" min="1" value="25">
+        <input type="submit" class= "btn">
+    </form>
+    <h2>Pick A Color</h2>
+    <input type="color" id="colorPicker">
+
+    <h2>Design Canvas</h2>
+    <table id="pixelCanvas" > 
+    </table>
+    <script src="designs.js"></script>
+    <b>
+      <font size="5">
+      <script>
+      
+      
+      var text="WELCOM"
+      var speed=75 // speed      
+      
+      if (document.all||document.getElementById){
+      document.write('<span id="highlight">' + text + '</span>')
+      var storetext=document.getElementById? document.getElementById("highlight") : document.all.highlight
+      }
+      else
+      document.write(text)
+      var hex=new Array("00","14","28","3C","50","64","78","8C","A0","B4","C8","DC","F0")
+      var r=1
+      var g=1
+      var b=1
+      var seq=1
+      function changetext(){
+      rainbow="#"+hex[r]+hex[g]+hex[b]
+      storetext.style.color=rainbow
+      }
+      function change(){
+      if (seq==6){
+      b--
+      if (b==0)
+      seq=1
+      }
+      if (seq==5){
+      r++
+      if (r==12)
+      seq=6
+      }
+      if (seq==4){
+      g--
+      if (g==0)
+      seq=5
+      }
+      if (seq==3){
+      b++
+      if (b==12)
+      seq=4
+      }
+      if (seq==2){
+      r--
+      if (r==0)
+      seq=3
+      }
+      if (seq==1){
+      g++
+      if (g==12)
+      seq=2
+      }
+      changetext()
+      }
+      function starteffect(){
+      if (document.all||document.getElementById)
+      flash=setInterval("change()",speed)
+      }
+      starteffect()
+      </script>
+      <script >
+            var sizes = new Array("0px", "1px", "2px", "3px", "4px");
+            sizes.pos = 0;
+            function elast() {
+            var el = document.all.elastic;
+            if (null == el.direction)
+               el.direction = 1;
+            else if ((sizes.pos > sizes.length - 4) || (0 == sizes.pos))
+               el.direction *= -1;
+               el.style.letterSpacing = sizes[sizes.pos += el.direction];
+            }
+            setInterval('elast()', 100)
+            </script>
+            
+      </font></b>
+      </font></p>
+</body>
+</html>
